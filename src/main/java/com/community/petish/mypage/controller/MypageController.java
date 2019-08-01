@@ -29,6 +29,7 @@ import com.community.petish.mypage.service.UserService_Mypage;
 import com.community.petish.user.dto.UserModifyPictureDTO_Mypage;
 import com.community.petish.user.dto.UserModifyRequestDTO_Mypage;
 import com.community.petish.user.dto.UserResponseDTO_Mypage;
+import com.community.petish.user.dto.response.LoginedUser;
 
 import lombok.extern.log4j.Log4j;
 
@@ -49,10 +50,10 @@ public class MypageController {
 	// 마이페이지 default
 	@RequestMapping("/")
 	public String mypage(Model model, HttpSession session, Criteria cri) {
-		Long user_id = 1L;
+		LoginedUser user = (LoginedUser) session.getAttribute("LOGIN_USER");
 		// 세션이 널이면 로그인페이지로 이동 (if)
-		UserResponseDTO_Mypage user = userServiceImpl.findUser(user_id);
-		model.addAttribute("user", user);
+		UserResponseDTO_Mypage userResponse = userServiceImpl.findUser(user.getId());
+		model.addAttribute("user", userResponse);
 		return "petish/mypage/default";
 	}
 
@@ -63,7 +64,7 @@ public class MypageController {
 	@RequestMapping(value = "/modifyform/{user_id}")
 	public String modifyform(@PathVariable("user_id") Long user_id, Model model, HttpSession session) {
 		// 로그인 여부 확인
-		if (session.getAttribute("user_id") == null) {
+		if (session.getAttribute("LOGIN_USER") == null) {
 			return "petish/loginpage";
 		} else {
 			// 회원아이디로 회원정보 찾아서 보내기

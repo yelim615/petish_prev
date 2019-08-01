@@ -3,7 +3,7 @@ package com.community.petish.mypage.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.community.petish.mypage.mapper.UserMapper;
+import com.community.petish.mypage.mapper.MypageUserMapper;
 import com.community.petish.user.dto.UserModifyPictureDTO_Mypage;
 import com.community.petish.user.dto.UserModifyRequestDTO_Mypage;
 import com.community.petish.user.dto.UserResponseDTO_Mypage;
@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 public class UserServiceImpl_Mypage implements UserService_Mypage{
 
 	@Autowired
-	UserMapper mapper;
+	MypageUserMapper mapper;
 	
 	//아이디로 회원정보 가져오는 메서드
 	@Override

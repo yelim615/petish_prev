@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.community.petish.mypage.dto.QuestionRequestDTO;
-import com.community.petish.mypage.mapper.UserMapper;
+import com.community.petish.mypage.mapper.MypageUserMapper;
 import com.community.petish.user.dto.UserModifyRequestDTO_Mypage;
 
 import lombok.Setter;
@@ -19,7 +19,7 @@ import lombok.extern.log4j.Log4j;
 public class UserMapperTests {
 
 	@Setter(onMethod_ =@Autowired)
-	private UserMapper mapper;
+	private MypageUserMapper mapper;
  
 	//mapper 주입 test
 	@Test

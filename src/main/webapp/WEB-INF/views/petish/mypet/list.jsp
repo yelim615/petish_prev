@@ -9,6 +9,7 @@
 	<%@ include file="/WEB-INF/views/commons/link.jspf" %>
 	
     <%@ include file="/WEB-INF/views/commons/script.jspf" %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
 
     <link rel="stylesheet" href="/resources/css/mypet/mypet.css">
     <link rel="stylesheet" href="/resources/css/mypet/mypetvote.css">
@@ -228,7 +229,7 @@
                         </div>
                             
                         <div class="user-profile-info">
-                            <a href="" id="user-id">
+                            <a id='post-creator' href="" class="user-detail">
                                 아이디
                             </a>
                         </div>
@@ -239,7 +240,7 @@
                             <div class="mypet-picture">
                                 <div class="picture">
 
-                                    <div class="picture-wrapper" id="1" ondblclick="likeDoubleClick(this.id)">
+                                    <div class="picture-wrapper" ondblclick="likeDoubleClick()">
                                         <div id="post-picture">
                                         <!-- <img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2018/05/22224952/beagle-puppy-in-large-cushion-chair.jpg"> -->
                                         </div>
@@ -256,7 +257,7 @@
                             </div>
 
                             <div class="mypet-created-date">
-                                <span id="create-date">2019-06-11</span>
+                                <span id="created-date">2019-06-11</span>
                             </div>
 
                             <div class="mypet-content" id="post-content">
@@ -285,12 +286,12 @@
                             <table class="s-caption-table">
                                 <tr>
                                     <td class="pr-1"> <i id="like-icon" class="like-icon fas fa-paw s-likes-icon" onclick="likeClick()"></i> 좋아요 <span class="s-likes" id="like-count">49</span> </td>
-                                    <td class="px-1"> <i id="1" class='comment-icon far fa-comment'></i> 댓글 <span class="s-comments" id="commnent-count">3</span></td>
+                                    <td class="px-1"> <i id="comment-icon" class='comment-icon far fa-comment'></i> 댓글 <span id="comment-count" class="s-comments">3</span></td>
                                 </tr>
                             </table>
                         </div>
 
-                        <div class="mypet-replies">
+                        <div id="mypet-replies-body" class="mypet-replies">
 
                             <!-- reply 한개 -->
                             <div class="mypet-reply">
@@ -380,7 +381,10 @@
                     </div>
 
                     <div class="modal-body" id="reply-form">
-                        <input class="form-control" placeholder="댓글 달기..." onkeypress="handleKeyPress(event)">
+                    	<form>
+	                        <input name="content" class="form-control" placeholder="댓글 달기..." onkeypress="handleKeyPress(event, this.id)">
+	                        <input name="postId" id="post-id" type="hidden" value="2">
+                    	</form>
                     </div>
 
                 </div>

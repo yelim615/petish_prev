@@ -23,12 +23,14 @@ import com.community.petish.mypage.service.DefaultService;
 import com.community.petish.mypage.service.MessageService;
 import com.community.petish.mypage.service.QuestionService;
 import com.community.petish.mypage.service.UserService_Mypage;
+import com.community.petish.user.dto.UserResponseDTO_Mypage;
+import com.community.petish.user.dto.response.LoginedUser;
 
 import lombok.extern.log4j.Log4j;
 
 @RestController
 @Log4j
-@RequestMapping("/user/api/*")
+@RequestMapping("/member/api/*")
 public class MemberRestController {
 	
 	@Autowired
@@ -40,6 +42,7 @@ public class MemberRestController {
 	@Autowired
 	private DefaultService defaultServiceImpl;
 
+	
 	//default
 		//default-내가 쓴 글 리스트
 		@GetMapping(value="/Writinglist/{member_id}",
